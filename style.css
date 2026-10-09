@@ -1,0 +1,17 @@
+.app {
+  display: flex;
+}
+
+.sidebar {
+  background-color: #1f2937;
+  color: white;
+  width: 240px;
+}
+
+.main-content {
+  padding: 24px;
+}
+
+.sidebar ul {
+  list-style: none;
+}

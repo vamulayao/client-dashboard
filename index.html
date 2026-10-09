@@ -4,39 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Client & Project Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
-    <aside>
-      <h2>ClientHub</h2>
-      <nav>
-        <ul>
-          <li><a href="#">Dashboard</a></li>
-          <li><a href="#">Clients</a></li>
-          <li><a href="#">Projects</a></li>
-          <li><a href="#">Settings</a></li>
-        </ul>
-      </nav>
-    </aside>
+    <div class="app">
+      <aside class="sidebar">
+        <h2>ClientHub</h2>
+        <nav>
+          <ul>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Clients</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Settings</a></li>
+          </ul>
+        </nav>
+      </aside>
 
-    <main>
-      <header>
-        <h1>Mabuhay!</h1>
-        <p>Logged in as: Vamu</p>
-      </header>
+      <main class="main-content">
+        <header class="page-header">
+          <h1>Mabuhay!</h1>
+          <p>Logged in as: Vamu</p>
+        </header>
 
-      <section>
-        <h2>Overview</h2>
-        <p>Visuals</p>
-      </section>
+        <section class="card" id="overview">
+          <h2>Overview</h2>
+          <p>Visuals</p>
+        </section>
 
-      <section>
-        <h2>Recent Clients</h2>
-        <p>Our Beloved Clients</p>
-      </section>
+        <section class="card" id="recent-clients">
+          <h2>Recent Clients</h2>
+          <p>Our Beloved Clients</p>
+        </section>
 
-      <footer>
-        <p>&copy; 2026 ClientHub</p>
-      </footer>
-    </main>
+        <footer class="page-footer">
+          <p>&copy; 2026 ClientHub</p>
+        </footer>
+      </main>
+    </div>
   </body>
 </html>
