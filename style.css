@@ -15,3 +15,15 @@
 .sidebar ul {
   list-style: none;
 }
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td {
+  border: 1px solid #d1d5db;
+  padding: 8px;
+  text-align: left;
+}
