@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Client</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Add a New Client</h1>
+
+      <form action="#" method="post">
+        <div class="form-group">
+          <label for="full_name">Full Name</label>
+          <input type="text" name="full_name" id="full_name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" name="phone" id="phone" autocomplete="tel" />
+        </div>
+
+        <div class="form-group">
+          <label for="company">Company</label>
+          <input type="text" name="company" id="company" />
+        </div>
+
+        <div class="form-group">
+          <label for="status">Status</label>
+          <select name="status" id="status">
+            <option value="active">Active</option>
+            <option value="pending" selected>Pending</option>
+            <option value="inactive">Inactive</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="notes">Notes</label>
+          <textarea name="notes" id="notes" maxlength="500" rows="4"></textarea>
+        </div>
+
+        <div class="form-group">
+          <button type="submit">Save Client</button>
+        </div>
+      </form>
+      
+      <div class="form-group">
+        <a href="index.html">Cancel</a>
+      </div>
+    </main>
+  </body>
+</html>
