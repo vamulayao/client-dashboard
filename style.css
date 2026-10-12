@@ -1,29 +1,160 @@
-.app {
-  display: flex;
+/* =========================================================
+   1. COLOR PALETTE & SETTINGS (light mode, the default)
+   :root = the whole page. Variables defined here can be
+   used anywhere with var(--name).
+   ========================================================= */
+:root {
+  --color-primary: #3b82f6;       /* buttons, links, highlights */
+  --color-sidebar-bg: #1e293b;    /* dark sidebar panel */
+  --color-sidebar-text: #e2e8f0;  /* light text on the sidebar */
+  --color-page-bg: #f8fafc;       /* page background */
+  --color-card-bg: #ffffff;       /* card background */
+  --color-text: #1e293b;          /* main text */
+  --color-text-muted: #64748b;    /* labels, secondary text */
+  --color-border: #e2e8f0;        /* table and card borders */
+  --font-main: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radius: 8px;                  /* rounded corners */
+  --space: 16px;                  /* standard spacing */
 }
 
-.sidebar {
-  background-color: #1f2937;
-  color: white;
-  width: 240px;
+/* =========================================================
+   2. DARK MODE
+   Runs only when Windows is set to dark. It replaces the
+   color values above. Only variables go in here, so the
+   rest of your CSS never needs to change.
+   ========================================================= */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary: #60a5fa;
+    --color-sidebar-bg: #0f172a;
+    --color-sidebar-text: #cbd5e1;
+    --color-page-bg: #1e293b;
+    --color-card-bg: #334155;
+    --color-text: #f1f5f9;
+    --color-text-muted: #94a3b8;
+    --color-border: #475569;
+  }
+}
+
+/* =========================================================
+   3. RESET
+   Must be top-level (not inside body or @media).
+   border-box makes width INCLUDE padding and border, so a
+   240px sidebar stays 240px even with padding added.
+   ========================================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   4. BASE STYLES
+   color = TEXT color. background-color = BACKGROUND color.
+   line-height has NO unit: 1.5 means 1.5x the font size.
+   ========================================================= */
+body {
+  margin: 0;                         /* removes the default white gap */
+  font-family: var(--font-main);
+  color: var(--color-text);
+  background-color: var(--color-page-bg);
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: 2rem;                   /* rem = relative to the base font size */
+  font-weight: 700;
+  margin: 0 0 var(--space);
+}
+
+h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 var(--space);
+}
+
+/* =========================================================
+   5. LAYOUT
+   ========================================================= */
+.app {
+  display: flex;                     /* sidebar and main sit side by side */
 }
 
 .main-content {
   padding: 24px;
 }
 
-.sidebar ul {
-  list-style: none;
+/* =========================================================
+   6. SIDEBAR
+   ========================================================= */
+.sidebar {
+  width: 240px;
+  padding: var(--space);
+  background-color: var(--color-sidebar-bg);  /* the dark panel */
+  color: var(--color-sidebar-text);
 }
 
+.sidebar h2 {
+  color: var(--color-sidebar-text);  /* makes "ClientHub" readable */
+}
+
+.sidebar ul {
+  list-style: none;                  /* removes bullets */
+  padding: 0;                        /* removes the default indent */
+  margin: 0;
+}
+
+.sidebar a {
+  display: block;                    /* whole row is clickable and can show a background */
+  padding: 8px 12px;
+  text-decoration: none;             /* removes the underline */
+  color: var(--color-sidebar-text);  /* fixes the dark-blue-on-dark links */
+  border-radius: 6px;
+}
+
+.sidebar a:hover {
+  background-color: rgba(255, 255, 255, 0.08); /* soft highlight on hover */
+  color: var(--color-primary);
+}
+
+/* =========================================================
+   7. CARDS (the Overview and Recent Clients sections)
+   ========================================================= */
+.card {
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space);
+  margin-bottom: var(--space);       /* gap between the two cards */
+}
+
+/* =========================================================
+   8. STAT CARD TEXT
+   margin: 0 removes the default paragraph gaps.
+   ========================================================= */
+.stat-card .label {
+  margin: 0;
+  font-size: 0.875rem;               /* smaller */
+  color: var(--color-text-muted);    /* muted gray */
+}
+
+.stat-card .value {
+  margin: 0;
+  font-size: 1.75rem;                /* larger */
+  font-weight: 700;                  /* bolder */
+}
+
+/* =========================================================
+   9. TABLE
+   ========================================================= */
 .data-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: collapse;         /* merges double borders into one */
 }
 
 .data-table th,
 .data-table td {
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--color-border);  /* width + style + COLOR */
   padding: 8px;
   text-align: left;
 }
