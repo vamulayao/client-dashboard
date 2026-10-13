@@ -4,17 +4,17 @@
    used anywhere with var(--name).
    ========================================================= */
 :root {
-  --color-primary: #3b82f6;       /* buttons, links, highlights */
-  --color-sidebar-bg: #1e293b;    /* dark sidebar panel */
-  --color-sidebar-text: #e2e8f0;  /* light text on the sidebar */
-  --color-page-bg: #f8fafc;       /* page background */
-  --color-card-bg: #ffffff;       /* card background */
-  --color-text: #1e293b;          /* main text */
-  --color-text-muted: #64748b;    /* labels, secondary text */
-  --color-border: #e2e8f0;        /* table and card borders */
+  --color-primary: #3b82f6; /* buttons, links, highlights */
+  --color-sidebar-bg: #1e293b; /* dark sidebar panel */
+  --color-sidebar-text: #e2e8f0; /* light text on the sidebar */
+  --color-page-bg: #f8fafc; /* page background */
+  --color-card-bg: #ffffff; /* card background */
+  --color-text: #1e293b; /* main text */
+  --color-text-muted: #64748b; /* labels, secondary text */
+  --color-border: #e2e8f0; /* table and card borders */
   --font-main: system-ui, -apple-system, "Segoe UI", sans-serif;
-  --radius: 8px;                  /* rounded corners */
-  --space: 16px;                  /* standard spacing */
+  --radius: 8px; /* rounded corners */
+  --space: 16px; /* standard spacing */
 }
 
 /* =========================================================
@@ -54,7 +54,7 @@
    line-height has NO unit: 1.5 means 1.5x the font size.
    ========================================================= */
 body {
-  margin: 0;                         /* removes the default white gap */
+  margin: 0; /* removes the default white gap */
   font-family: var(--font-main);
   color: var(--color-text);
   background-color: var(--color-page-bg);
@@ -62,7 +62,7 @@ body {
 }
 
 h1 {
-  font-size: 2rem;                   /* rem = relative to the base font size */
+  font-size: 2rem; /* rem = relative to the base font size */
   font-weight: 700;
   margin: 0 0 var(--space);
 }
@@ -77,11 +77,13 @@ h2 {
    5. LAYOUT
    ========================================================= */
 .app {
-  display: flex;                     /* sidebar and main sit side by side */
+  display: flex; /* sidebar and main sit side by side */
+  min-height: 100vh;
 }
 
 .main-content {
   padding: 24px;
+  flex: 1;
 }
 
 /* =========================================================
@@ -90,31 +92,34 @@ h2 {
 .sidebar {
   width: 240px;
   padding: var(--space);
-  background-color: var(--color-sidebar-bg);  /* the dark panel */
+  background-color: var(--color-sidebar-bg); /* the dark panel */
   color: var(--color-sidebar-text);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .sidebar h2 {
-  color: var(--color-sidebar-text);  /* makes "ClientHub" readable */
+  color: var(--color-sidebar-text); /* makes "ClientHub" readable */
 }
 
 .sidebar ul {
-  list-style: none;                  /* removes bullets */
-  padding: 0;                        /* removes the default indent */
+  list-style: none; /* removes bullets */
+  padding: 0; /* removes the default indent */
   margin: 0;
 }
 
 .sidebar a {
-  display: block;                    /* whole row is clickable and can show a background */
+  display: block; /* whole row is clickable and can show a background */
   padding: 8px 12px;
-  text-decoration: none;             /* removes the underline */
-  color: var(--color-sidebar-text);  /* fixes the dark-blue-on-dark links */
+  text-decoration: none; /* removes the underline */
+  color: var(--color-sidebar-text); /* fixes the dark-blue-on-dark links */
   border-radius: 6px;
 }
 
 .sidebar a:hover {
-  background-color: rgba(255, 255, 255, 0.08); /* soft highlight on hover */
-  color: var(--color-primary);
+  color: var(--color-primary); /* soft highlight on hover */
 }
 
 /* =========================================================
@@ -125,7 +130,7 @@ h2 {
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   padding: var(--space);
-  margin-bottom: var(--space);       /* gap between the two cards */
+  margin-bottom: var(--space); /* gap between the two cards */
 }
 
 /* =========================================================
@@ -134,14 +139,14 @@ h2 {
    ========================================================= */
 .stat-card .label {
   margin: 0;
-  font-size: 0.875rem;               /* smaller */
-  color: var(--color-text-muted);    /* muted gray */
+  font-size: 0.875rem; /* smaller */
+  color: var(--color-text-muted); /* muted gray */
 }
 
 .stat-card .value {
   margin: 0;
-  font-size: 1.75rem;                /* larger */
-  font-weight: 700;                  /* bolder */
+  font-size: 1.75rem; /* larger */
+  font-weight: 700; /* bolder */
 }
 
 /* =========================================================
@@ -149,12 +154,38 @@ h2 {
    ========================================================= */
 .data-table {
   width: 100%;
-  border-collapse: collapse;         /* merges double borders into one */
+  border-collapse: collapse; /* merges double borders into one */
 }
 
 .data-table th,
 .data-table td {
-  border: 1px solid var(--color-border);  /* width + style + COLOR */
+  border: 1px solid var(--color-border); /* width + style + COLOR */
   padding: 8px;
   text-align: left;
+}
+
+.page-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-info {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.user-info p {
+  margin: 0;
+}
+
+.user-info a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.user-info a:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
 }
