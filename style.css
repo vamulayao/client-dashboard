@@ -19,9 +19,8 @@
 
 /* =========================================================
    2. DARK MODE
-   Runs only when Windows is set to dark. It replaces the
-   color values above. Only variables go in here, so the
-   rest of your CSS never needs to change.
+   Only variables go in here, so the rest of the CSS
+   never needs to change.
    ========================================================= */
 @media (prefers-color-scheme: dark) {
   :root {
@@ -38,9 +37,7 @@
 
 /* =========================================================
    3. RESET
-   Must be top-level (not inside body or @media).
-   border-box makes width INCLUDE padding and border, so a
-   240px sidebar stays 240px even with padding added.
+   border-box makes width INCLUDE padding and border.
    ========================================================= */
 *,
 *::before,
@@ -50,19 +47,17 @@
 
 /* =========================================================
    4. BASE STYLES
-   color = TEXT color. background-color = BACKGROUND color.
-   line-height has NO unit: 1.5 means 1.5x the font size.
    ========================================================= */
 body {
   margin: 0; /* removes the default white gap */
   font-family: var(--font-main);
-  color: var(--color-text);
-  background-color: var(--color-page-bg);
-  line-height: 1.5;
+  color: var(--color-text); /* TEXT color */
+  background-color: var(--color-page-bg); /* BACKGROUND color */
+  line-height: 1.5; /* no unit = 1.5x the font size */
 }
 
 h1 {
-  font-size: 2rem; /* rem = relative to the base font size */
+  font-size: 2rem;
   font-weight: 700;
   margin: 0 0 var(--space);
 }
@@ -75,33 +70,37 @@ h2 {
 
 /* =========================================================
    5. LAYOUT
+   .app is the flex PARENT. Its children (.sidebar and
+   .main-content) sit side by side.
    ========================================================= */
 .app {
-  display: flex; /* sidebar and main sit side by side */
-  min-height: 100vh;
+  display: flex;
+  min-height: 100vh; /* vh = viewport height: 100vh = full screen */
 }
 
 .main-content {
+  flex: 1; /* CHILD: take all leftover width */
   padding: 24px;
-  flex: 1;
 }
 
 /* =========================================================
    6. SIDEBAR
+   .sidebar is a child of .app AND a flex parent itself
+   (column = children stack top to bottom).
    ========================================================= */
 .sidebar {
   width: 240px;
+  flex-shrink: 0; /* never squeeze below 240px */
   padding: var(--space);
-  background-color: var(--color-sidebar-bg); /* the dark panel */
+  background-color: var(--color-sidebar-bg);
   color: var(--color-sidebar-text);
-  flex-shrink: 0;
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  flex-direction: column; /* stack children vertically */
+  gap: 8px; /* space between children */
 }
 
 .sidebar h2 {
-  color: var(--color-sidebar-text); /* makes "ClientHub" readable */
+  color: var(--color-sidebar-text);
 }
 
 .sidebar ul {
@@ -111,42 +110,42 @@ h2 {
 }
 
 .sidebar a {
-  display: block; /* whole row is clickable and can show a background */
+  display: block; /* whole row is clickable */
   padding: 8px 12px;
-  text-decoration: none; /* removes the underline */
-  color: var(--color-sidebar-text); /* fixes the dark-blue-on-dark links */
+  text-decoration: none;
+  color: var(--color-sidebar-text);
   border-radius: 6px;
 }
 
 .sidebar a:hover {
-  color: var(--color-primary); /* soft highlight on hover */
+  background-color: rgba(255, 255, 255, 0.08); /* soft highlight (restored) */
+  color: var(--color-primary);
 }
 
 /* =========================================================
-   7. CARDS (the Overview and Recent Clients sections)
+   7. CARDS
    ========================================================= */
 .card {
   background-color: var(--color-card-bg);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   padding: var(--space);
-  margin-bottom: var(--space); /* gap between the two cards */
+  margin-bottom: var(--space);
 }
 
 /* =========================================================
    8. STAT CARD TEXT
-   margin: 0 removes the default paragraph gaps.
    ========================================================= */
 .stat-card .label {
   margin: 0;
-  font-size: 0.875rem; /* smaller */
-  color: var(--color-text-muted); /* muted gray */
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
 }
 
 .stat-card .value {
   margin: 0;
-  font-size: 1.75rem; /* larger */
-  font-weight: 700; /* bolder */
+  font-size: 1.75rem;
+  font-weight: 700;
 }
 
 /* =========================================================
@@ -154,38 +153,60 @@ h2 {
    ========================================================= */
 .data-table {
   width: 100%;
-  border-collapse: collapse; /* merges double borders into one */
+  border-collapse: collapse;
 }
 
 .data-table th,
 .data-table td {
-  border: 1px solid var(--color-border); /* width + style + COLOR */
+  border: 1px solid var(--color-border);
   padding: 8px;
   text-align: left;
 }
 
-.page-header{
+/* =========================================================
+   10. PAGE HEADER
+   .page-header is a flex PARENT with 2 children:
+   the <h1> and the .user-info box.
+   ========================================================= */
+.page-header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; /* one child left, one right */
+  align-items: center; /* line up vertically */
 }
 
 .user-info {
-  display: flex;
-  gap: 16px;
+  display: flex; /* parent of the <p> and the link */
+  gap: 16px; /* space between them */
   align-items: center;
 }
 
 .user-info p {
-  margin: 0;
+  margin: 0; /* removes the default paragraph gap */
 }
 
 .user-info a {
-  color: var(--color-text);
+  color: var(--color-primary); /* back to the spec: primary color */
   text-decoration: none;
 }
 
 .user-info a:hover {
-  color: var(--color-primary);
-  text-decoration: underline;
+  text-decoration: underline; /* underline returns on hover */
+}
+
+/* =========================================================
+   11. STRETCH GOAL (your turn!)
+   Remove the comment marks, then fill in the blanks.
+   ========================================================= */
+
+.stats {
+  display: flex;
+  gap: var(--space);
+}
+
+.stat-card {
+  flex: 1;
+}
+
+.stat-card .value{
+  text-align: center;
 }
