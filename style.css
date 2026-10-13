@@ -130,7 +130,6 @@ h2 {
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   padding: var(--space);
-  margin-bottom: var(--space);
 }
 
 /* =========================================================
@@ -193,20 +192,25 @@ h2 {
   text-decoration: underline; /* underline returns on hover */
 }
 
-/* =========================================================
-   11. STRETCH GOAL (your turn!)
-   Remove the comment marks, then fill in the blanks.
-   ========================================================= */
-
+/* I used Grid here instead of Flex because ______ */
 .stats {
-  display: flex;
+  display: grid;
   gap: var(--space);
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 }
 
 .stat-card {
-  flex: 1;
+  padding: var(--space);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background-color: var(--color-page-bg);
 }
 
 .stat-card .value{
   text-align: center;
+}
+
+.content-grid{
+  display: grid;
+  gap: var(--space);
 }
